@@ -4,6 +4,10 @@
 
 让 DeepSeek Harness / DSH Desktop 与 VS Code 中的 DSH 扩展连接，在编辑器中接续同一会话。
 
+## 演示
+
+![DSH 与 VS Code 接续同一会话](docs/assets/demo-preview.jpg)
+
 ## 安装即连接
 
 1. 在 DSH 桌面端的插件安装入口安装本插件的 `.tgz`，启用插件并保持桌面端运行。首次安装默认开启 **VS Code 连接**。

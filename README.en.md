@@ -4,6 +4,10 @@
 
 Connect DeepSeek Harness / DSH Desktop to the DSH extension in VS Code and continue the same conversation in your editor.
 
+## Demo
+
+![Continuing the same conversation in DSH and VS Code](docs/assets/demo-preview.jpg)
+
 ## Install and connect
 
 1. Install this plugin's `.tgz` through Desktop's plugin installer, enable the plugin and keep Desktop running. New installations enable **VS Code connection** by default.
