@@ -8,7 +8,7 @@ Never submit live connection addresses, credentials, private profiles or generat
 
 ## Distribution and directory listing
 
-Use GitHub Releases for prebuilt plugin tarballs. Run the manual **Package release tarball** workflow, download its Actions artifact, and attach `dsh-vscode-connect.tgz` to a Release. The fixed filename supports a stable `releases/latest/download/dsh-vscode-connect.tgz` link; the versioned archive is available for pinned release links. An Actions artifact alone is not a public Release asset.
+The plugin is published to [npm](https://www.npmjs.com/package/dsh-vscode-connect). Publish subsequent versions from this repository with `npm publish --access public --registry=https://registry.npmjs.org/`; the existing prepack hook builds the runtime entries. GitHub Releases provide an alternative prebuilt tarball distribution. Run the manual **Package release tarball** workflow, download its Actions artifact, and attach `dsh-vscode-connect.tgz` to a Release. The fixed filename supports a stable `releases/latest/download/dsh-vscode-connect.tgz` link; the versioned archive is available for pinned release links. An Actions artifact alone is not a public Release asset.
 
 The repository deliberately omits generated `dist/`. Its current build needs development dependencies and has no Git-install `prepare` hook. Submit a working prebuilt Release URL as the listing's `tarball` rather than assuming a source checkout can install directly.
 

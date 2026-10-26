@@ -12,11 +12,37 @@
 
 ## 安装即连接
 
-1. 在 DSH 桌面端的插件安装入口安装本插件的 `.tgz`，启用插件并保持桌面端运行。首次安装默认开启 **VS Code 连接**。
+在 **DeepSeek Harness / DSH Desktop → 插件 → 添加插件** 中填写下面的包名，点击「安装」即可，无需先下载文件：
+
+```text
+dsh-vscode-connect@latest
+```
+
+1. 安装后启用插件并保持桌面端运行。首次安装默认开启 **VS Code 连接**。
 2. 在 VS Code 中安装配套的 DSH 扩展，打开并信任项目文件夹。
 3. Windows 同机环境下自动发现并连接；选择同一工作区和已有会话，即可继续开发。
 
 无需开启桌面端浏览器访问，也无需切换桌面布局。曾手动关闭连接的设置会保留，可在 **设置 → 通用设置 → VS Code 连接** 重新开启。
+
+插件已发布到 [npm](https://www.npmjs.com/package/dsh-vscode-connect)。也可从 [GitHub Releases](https://github.com/mcdottok/dsh-vscode-connect/releases) 下载 `.tgz`，通过本地文件安装。若镜像源暂时找不到包，可切换官方 npm 源重试。
+
+### 命令行安装（从 npm 获取）
+
+如果使用 DSH Web / CLI，可执行：
+
+```powershell
+dsh plugin --profile web add dsh-vscode-connect@latest
+```
+
+如果操作桌面端的 `desktop` profile，使用**该桌面端自带的 DSH CLI** 执行：
+
+```powershell
+dsh plugin --profile desktop add dsh-vscode-connect@latest
+```
+
+上面的 `dsh` 应指向目标桌面端随附的 CLI，不要用其他版本的全局 DSH 命令修改桌面端 profile。桌面用户也可以直接使用前面的「添加插件」入口。
+
+包由 npm 提供，`dsh plugin` 负责安装到对应 profile 并注册插件。
 
 ## 手动连接与管理
 

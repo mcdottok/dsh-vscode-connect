@@ -12,11 +12,37 @@ Connect DeepSeek Harness / DSH Desktop to the DSH extension in VS Code and conti
 
 ## Install and connect
 
-1. Install this plugin's `.tgz` through Desktop's plugin installer, enable the plugin and keep Desktop running. New installations enable **VS Code connection** by default.
+In **DeepSeek Harness / DSH Desktop → Plugins → Add plugin**, enter the package name below and click **Install**. No manual download is needed:
+
+```text
+dsh-vscode-connect@latest
+```
+
+1. After installation, enable the plugin and keep Desktop running. New installations enable **VS Code connection** by default.
 2. Install the companion DSH extension in VS Code and open a trusted project folder.
 3. On Windows, the plugins discover and connect automatically on the same machine. Select the same workspace and existing session to continue development.
 
 Browser access and a specific Desktop layout are not required. A previously saved disabled setting is respected; re-enable it under **Settings → General → VS Code connection**.
+
+Available on [npm](https://www.npmjs.com/package/dsh-vscode-connect). Alternatively, download a `.tgz` from [GitHub Releases](https://github.com/mcdottok/dsh-vscode-connect/releases) and install the local file. If a registry mirror cannot find the package yet, select the official npm registry and retry.
+
+### Command-line installation from npm
+
+For a DSH Web / CLI installation, run:
+
+```powershell
+dsh plugin --profile web add dsh-vscode-connect@latest
+```
+
+For Desktop's `desktop` profile, run this with **the CLI bundled with that Desktop installation**:
+
+```powershell
+dsh plugin --profile desktop add dsh-vscode-connect@latest
+```
+
+Here, `dsh` must refer to the target Desktop's bundled CLI. Do not use a global DSH command from another runtime version to modify Desktop's profile. Desktop users can also use the **Add plugin** entry described above.
+
+The package is downloaded from npm; `dsh plugin` installs it into the selected profile and registers the plugin.
 
 ## Manual connection and controls
 
