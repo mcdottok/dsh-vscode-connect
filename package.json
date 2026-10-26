@@ -1,0 +1,76 @@
+{
+  "name": "dsh-vscode-connect",
+  "version": "0.1.11",
+  "description": "Connect DeepSeek Harness to Visual Studio Code with local Windows auto-pairing and manual connection.",
+  "type": "module",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./client": "./dist/client.js",
+    "./package.json": "./package.json",
+    "./icon": "./assets/vscode.png"
+  },
+  "files": [
+    "dist",
+    "assets",
+    "cordis.patch.yml",
+    "README.md",
+    "README.en.md",
+    "THIRD_PARTY_NOTICES.txt",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=22.19.0",
+    "dsh": "0.2.1-rc.2 || 0.2.1-rc.3"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-renderer"
+      ],
+      "immediately": true
+    }
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node scripts/build.mjs && node --test tests/*.test.mjs",
+    "test:server": "node --test tests/api.test.mjs tests/bridge.test.mjs tests/lifecycle.test.mjs tests/pairing.test.mjs tests/automatic-discovery.test.mjs tests/entry-routing.test.mjs",
+    "test:memory": "node --expose-gc scripts/memory-check.mjs",
+    "prepack": "npm run build"
+  },
+  "devDependencies": {
+    "@deepseek-ai/dsh-api-gateway": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-deque": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-typert-protocol": "0.2.1-rc.2",
+    "@deepseek-ai/schemastery": "3.18.5",
+    "esbuild": "0.28.2",
+    "jsdom": "30.0.1",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "dependencies": {
+    "ws": "8.21.3"
+  },
+  "icon": "assets/vscode.png",
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "vscode",
+    "editor",
+    "connection"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mcdottok/dsh-vscode-connect.git"
+  },
+  "homepage": "https://github.com/mcdottok/dsh-vscode-connect#readme",
+  "bugs": {
+    "url": "https://github.com/mcdottok/dsh-vscode-connect/issues"
+  }
+}

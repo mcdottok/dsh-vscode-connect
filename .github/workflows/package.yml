@@ -1,0 +1,26 @@
+name: Package release tarball
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.19.0
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm test
+      - name: Package prebuilt plugin
+        run: |
+          mkdir -p artifacts
+          npm pack --ignore-scripts --pack-destination artifacts
+          node --input-type=module -e 'import fs from "node:fs"; const p=JSON.parse(fs.readFileSync("package.json","utf8")); fs.copyFileSync(`artifacts/${p.name}-${p.version}.tgz`, "artifacts/dsh-vscode-connect.tgz");'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dsh-vscode-connect
+          path: artifacts/*.tgz
+          if-no-files-found: error

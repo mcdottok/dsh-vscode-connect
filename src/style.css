@@ -1,0 +1,153 @@
+.vsc-connect {
+  color: var(--dsw-alias-label-primary, inherit);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.vsc-connect--compact {
+  padding: 16px 0;
+  border-bottom: 0.5px solid var(--dsw-alias-border-l2, #ddd);
+}
+.vsc-connect__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.vsc-connect__intro {
+  min-width: 0;
+}
+.vsc-connect__actions {
+  margin-top: 12px;
+}
+/* Scoped from DSH ui-primitives Switch; see THIRD_PARTY_NOTICES.txt. */
+/* The on/off appearance keys off aria-checked rather than a parallel class, so
+ * the visual state cannot disagree with the state assistive technology reads.
+ *
+ * The capsule track and circular thumb opt out of the global superellipse. */
+.vsc-connect__switch {
+  box-sizing: border-box;
+  position: relative;
+  flex: 0 0 auto;
+  width: 36px;
+  height: 20px;
+  padding: 2px;
+  border: 0;
+  border-radius: 999px;
+  corner-shape: round;
+  background: var(--dsw-alias-border-l3, #dedede);
+  cursor: pointer;
+}
+
+.vsc-connect__switch[aria-checked='true'] {
+  background: var(--dsw-alias-brand-primary, #101114);
+}
+
+.vsc-connect__switch:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.vsc-connect__switch:focus-visible {
+  outline: var(--dsw-focus-ring-width, 2px) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary, #5686f5));
+  outline-offset: 2px;
+}
+
+.vsc-connect__switch > span {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  corner-shape: round;
+  background: var(--dsw-alias-label-primary-foreground, #fff);
+  transition: transform 120ms ease;
+}
+
+.vsc-connect__switch[aria-checked='false'] > span {
+  background: var(--dsw-alias-switch-thumb, #fff);
+}
+
+.vsc-connect__switch[aria-checked='true'] > span {
+  transform: translateX(16px);
+}
+
+.vsc-connect__title {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+.vsc-connect__muted {
+  color: var(--dsw-alias-label-secondary, #888);
+  font-size: 12px;
+  margin-top: 4px;
+}
+.vsc-connect__button {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  flex: none;
+  height: 36px;
+  padding: 0 14px;
+  border: 0.5px solid var(--dsw-alias-border-l3, #dedede);
+  border-radius: var(--dsw-radius-md, 10px);
+  background: transparent;
+  color: var(--dsw-alias-label-primary, inherit);
+  font: inherit;
+  font-size: 14px;
+  line-height: 22px;
+  cursor: pointer;
+}
+.vsc-connect__button:hover:not(:disabled) {
+  background: var(--dsw-alias-interactive-bg-hover, #8881);
+}
+.vsc-connect__button:focus-visible {
+  outline: var(--dsw-focus-ring-width, 2px) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary, #5686f5));
+  outline-offset: 2px;
+}
+.vsc-connect__button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.vsc-connect__notice {
+  font-size: 12px;
+  overflow-wrap: anywhere;
+  margin: 10px 0 0;
+}
+.vsc-connect__notice[role="alert"] {
+  color: var(--dsw-alias-error-primary, #ce4f4f);
+}
+.vsc-connect__status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 20px 0;
+  font-size: 12px;
+}
+.vsc-connect__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #999;
+}
+.vsc-connect__dot--ready {
+  background: #29a85e;
+}
+.vsc-connect h3 {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 20px 0 8px;
+}
+.vsc-connect__steps {
+  padding-left: 20px;
+  font-size: 13px;
+}
+.vsc-connect__steps li {
+  padding: 4px 0;
+}
+@media (max-width: 560px) {
+  .vsc-connect__row {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}

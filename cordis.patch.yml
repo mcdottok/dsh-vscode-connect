@@ -1,0 +1,3 @@
+- insert:
+    - id: vscode-connect
+      name: dsh-vscode-connect

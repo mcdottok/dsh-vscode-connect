@@ -1,0 +1,18 @@
+node_modules/
+dist/
+artifacts/
+*.log
+
+# Private environment and local investigation material
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+coverage/
+.cache/
+.DS_Store
+Thumbs.db
+LOCAL_*.md
