@@ -8,7 +8,7 @@ const LOCALE = "vscodeConnect";
 const en = {
   title: "VS Code connection",
   description:
-    "Continue this Harness workspace in VS Code. All DSH Desktop modes work; browser access can stay off.",
+    "Connect this Desktop instance to DSH Coding Agent in VS Code and continue the same workspace and conversation.",
   copy: "Copy connection address",
   copying: "Copying…",
   copied: "Copied. Paste it into DSH: Connect to Desktop in VS Code.",
@@ -17,50 +17,59 @@ const en = {
   clipboardFailed:
     "Clipboard access failed. Allow clipboard access and try again.",
   checking: "Checking local connection…",
-  ready: "Local connection service is ready",
+  ready:
+    "Desktop connection entry is ready; check connection status in VS Code",
   unavailable: "Local connection service is unavailable",
   enabled: "Enable VS Code connection entry",
   disabled: "Connection entry is off",
   switchHint:
-    "Enable connection and automatic reconnection from VS Code. Turning off closes dedicated connections and stops issuing new addresses.",
+    "Enabled by default on first installation. Keep Desktop running; browser access and a specific layout are not required. Turning this off disconnects VS Code and stops automatic discovery.",
   switchFailed: "Could not save the switch. Check the current state and retry.",
   retry: "Check again",
+  companion: "Install the VS Code extension: ",
+  manual: "Manual connection",
   steps: "Connect automatically",
-  step1: "Keep Harness running with VS Code connection enabled. New installations enable it by default.",
+  step1:
+    "Install DSH Coding Agent in VS Code using the link above, then open and trust your project folder.",
   step2:
-    "Install the DSH extension in VS Code and open a trusted project folder. On Windows, the plugins discover and connect automatically on the same machine.",
+    "Keep Desktop running with this connection entry enabled. In the extension, select DSH Desktop. On local Windows, discovery and connection are automatic.",
   step3:
     "Select the same workspace and an existing conversation to continue it.",
   credentials:
-    "For manual setup, copy the address above and run DSH: Connect to Desktop in VS Code. The address contains credentials; do not share it.",
+    "For manual setup, click Copy connection address below and run DSH: Connect to Desktop in VS Code. The address contains credentials; do not share it.",
   restart:
-    "Automatic connection requires the local Windows DSH extension 0.1.48+. Saved manual connections take precedence. Other platforms, remote environments and discovery failures use manual setup. Previously disabled settings remain off until you enable them.",
+    "If connection fails, check that both plugins and this entry are enabled. Then copy a fresh address and reconnect in VS Code. Other platforms and remote environments require manual connection; use the latest companion extension.",
 };
 const zh = {
   title: "VS Code 连接",
-  description: "在 VS Code 中接续当前工作区和会话。DSH Desktop 任意模式均可使用，无需开启浏览器访问。",
+  description:
+    "配合 VS Code 中的 DSH Coding Agent，在编辑器中接续此桌面端的工作区和会话。",
   copy: "复制连接地址",
   copying: "正在复制…",
   copied: "已复制，请在 VS Code 中执行「DSH: 连接桌面端」并粘贴。",
   failed: "无法获取本机连接地址，请确认插件已启用后重试。",
   clipboardFailed: "无法写入剪贴板，请允许剪贴板访问后重试。",
   checking: "正在检查本机连接…",
-  ready: "本机连接服务已就绪",
+  ready: "桌面端连接入口已就绪，连接状态请在 VS Code 中查看",
   unavailable: "本机连接服务暂不可用",
   enabled: "启用 VS Code 连接入口",
   disabled: "连接入口已关闭",
   switchHint:
-    "开启后允许 VS Code 连接与自动重连。关闭后断开专用连接并停止提供新地址。",
+    "首次安装默认开启。保持桌面端运行即可，无需开启浏览器访问或切换布局。关闭后会断开 VS Code 连接并停止自动发现。",
   switchFailed: "开关保存失败，请重新检查当前状态后重试。",
   retry: "重新检查",
+  companion: "安装 VS Code 配套扩展：",
+  manual: "手动连接",
   steps: "自动连接",
-  step1: "保持 DSH 运行并开启 VS Code 连接。首次安装默认开启，无需复制地址。",
+  step1:
+    "通过上方链接在 VS Code 中安装 DSH Coding Agent，打开并信任项目文件夹。",
   step2:
-    "在 VS Code 中安装 DSH 扩展，打开并信任项目文件夹。Windows 同机环境下会自动发现并连接。",
+    "保持桌面端运行且此连接入口开启，在扩展中选择「DSH Desktop」。Windows 同机环境下自动发现并连接，无需复制地址。",
   step3: "选择同一个工作区和已有会话，即可继续。",
-  credentials: "需要手动连接时，复制上方地址，在 VS Code 执行「DSH: 连接桌面端」并粘贴。地址包含凭据，请勿分享。",
+  credentials:
+    "需要手动连接时，点击下方「复制连接地址」，在 VS Code 执行「DSH: 连接桌面端」并粘贴。地址包含凭据，请勿分享。",
   restart:
-    "自动连接需要 Windows 本机和 VS Code DSH 扩展 0.1.48+，已有手动连接配置优先。其他平台、远程环境或自动发现不可用时，请手动连接。曾保存的关闭设置需自行重新开启。",
+    "连接失败时，先确认两端插件及此入口已启用，再复制最新地址，在 VS Code 中重新连接。其他平台或远程环境请手动连接，建议使用最新版配套扩展。",
 };
 
 export async function requestConnection(method, signal, body) {
@@ -219,10 +228,32 @@ function ConnectionControls({ t, compact = false }) {
         </button>
       </div>
       <p className="vsc-connect__muted">{t("switchHint")}</p>
+      <p className="vsc-connect__companion">
+        {t("companion")}
+        <a
+          href="https://github.com/mcdottok/vscode-dsh"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          DSH Coding Agent ↗
+        </a>
+      </p>
+      {!compact ? (
+        <>
+          <h3>{t("steps")}</h3>
+          <ol className="vsc-connect__steps">
+            <li>{t("step1")}</li>
+            <li>{t("step2")}</li>
+            <li>{t("step3")}</li>
+          </ol>
+        </>
+      ) : null}
+      <h3>{t("manual")}</h3>
+      <p className="vsc-connect__muted">{t("credentials")}</p>
       <div className="vsc-connect__actions">
         <button
           type="button"
-          className="vsc-connect__button"
+          className="vsc-connect__button vsc-connect__button--primary"
           disabled={busy || !state?.enabled || status === "unavailable"}
           onClick={() => void copy()}
         >
@@ -253,13 +284,6 @@ function ConnectionControls({ t, compact = false }) {
               </button>
             ) : null}
           </div>
-          <h3>{t("steps")}</h3>
-          <ol className="vsc-connect__steps">
-            <li>{t("step1")}</li>
-            <li>{t("step2")}</li>
-            <li>{t("step3")}</li>
-          </ol>
-          <p className="vsc-connect__muted">{t("credentials")}</p>
           <p className="vsc-connect__muted">{t("restart")}</p>
         </>
       ) : null}

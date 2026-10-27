@@ -1,8 +1,8 @@
 # DSH VS Code Connect
 
-[简体中文](README.md) | [English](README.en.md)
+[简体中文](README.md) | English
 
-Connect DeepSeek Harness / DSH Desktop to the companion [DSH for VS Code](https://github.com/mcdottok/vscode-dsh) extension and continue the same conversation in your editor, with an experience similar to the Codex and Claude Code extensions for VS Code.
+Connect DeepSeek Harness / DSH Desktop to the companion [DSH Coding Agent](https://github.com/mcdottok/vscode-dsh) extension and continue the same conversation in your editor, with an experience similar to the Codex and Claude Code extensions for VS Code.
 
 ## Demo
 
@@ -21,7 +21,7 @@ dsh-vscode-connect@latest
 ```
 
 1. After installation, enable the plugin and keep Desktop running. New installations enable **VS Code connection** by default.
-2. Download the `.vsix` from [DSH for VS Code Releases](https://github.com/mcdottok/vscode-dsh/releases), install it in VS Code via **Extensions: Install from VSIX…**, and open a trusted project folder.
+2. Search for **DSH Coding Agent** by `mcdottok` in VS Code Extensions and install it, or download a `.vsix` from [GitHub Releases](https://github.com/mcdottok/vscode-dsh/releases). Open a trusted project folder and select **DSH Desktop** in the extension’s connection settings.
 3. On Windows, the plugins discover and connect automatically on the same machine. Select the same workspace and existing session to continue development.
 
 Browser access and a specific Desktop layout are not required. A previously saved disabled setting is respected; re-enable it under **Settings → General → VS Code connection**.
@@ -46,9 +46,15 @@ When managing the `desktop` profile, `dsh` must refer to the target Desktop's bu
 
 The package is downloaded from npm; `dsh plugin` installs it into the selected profile and registers the plugin.
 
+## Connection notes
+
+- This is the **Desktop companion plugin** for **DSH Coding Agent** in VS Code. Install both to connect to Desktop.
+- A ready connection entry means Desktop can accept connections. Check the VS Code extension for the actual connection status.
+- This plugin is not required when the VS Code extension runs an independent service using a locally installed npm `dsh` package. Opening the same session in that service and Desktop may prevent model changes or message sending because another instance holds the session. Release it in the other instance, use a new session, or connect to the original Desktop instead. Different sessions in the same workspace are not subject to this restriction.
+
 ## Manual connection and controls
 
-For other platforms, remote environments, or when automatic connection is unavailable, choose **Copy connection address** under **Settings → General → VS Code connection** in Desktop, then run **DSH: Connect to Desktop** in VS Code and paste the address. Existing manual connection settings take precedence over discovery.
+For other platforms, remote environments, or when automatic connection is unavailable, choose **Copy connection address** under **Settings → General → VS Code connection** in Desktop, then run **DSH: Connect to Desktop** in VS Code and paste the address. Existing manual connection settings take precedence over discovery. If recovery fails, check that Desktop, both plugins and the connection switch are enabled, then copy a fresh address and reconnect.
 
 The address contains credentials; do not share it. Automatic connection currently supports local Windows only, with credentials protected by Windows account encryption and VS Code SecretStorage. Turning the switch off stops dedicated connections and automatic discovery.
 
