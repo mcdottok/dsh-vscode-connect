@@ -26,7 +26,7 @@ const en = {
     "Enabled by default on first installation. Keep Desktop running; browser access and a specific layout are not required. Turning this off disconnects VS Code and stops automatic discovery.",
   switchFailed: "Could not save the switch. Check the current state and retry.",
   retry: "Check again",
-  companion: "Install the VS Code extension: ",
+  companion: "Install from VS Code Marketplace: ",
   manual: "Manual connection",
   steps: "Connect automatically",
   step1:
@@ -58,7 +58,7 @@ const zh = {
     "首次安装默认开启。保持桌面端运行即可，无需开启浏览器访问或切换布局。关闭后会断开 VS Code 连接并停止自动发现。",
   switchFailed: "开关保存失败，请重新检查当前状态后重试。",
   retry: "重新检查",
-  companion: "安装 VS Code 配套扩展：",
+  companion: "从 VS Code 扩展商城安装：",
   manual: "手动连接",
   steps: "自动连接",
   step1:
@@ -231,7 +231,7 @@ function ConnectionControls({ t, compact = false }) {
       <p className="vsc-connect__companion">
         {t("companion")}
         <a
-          href="https://github.com/mcdottok/vscode-dsh"
+          href="https://marketplace.visualstudio.com/items?itemName=mcdottok.dsh-coding-agent"
           target="_blank"
           rel="noopener noreferrer"
         >
