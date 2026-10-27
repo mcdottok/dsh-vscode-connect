@@ -61,6 +61,8 @@ npm test
 
 On Windows, run `.\build.cmd` to build and package into `artifacts/`. Alternatively, run `npm run build`, create `artifacts/`, then run `npm pack --ignore-scripts --pack-destination artifacts`. No sibling extension repository is required.
 
+Later updates in the same kernel series are admitted without a separate release for every RC. Build dependencies remain pinned to the verified baseline; complete behavior on newer runtimes still needs validation.
+
 See `engines.dsh` in `package.json` for declared runtime compatibility. A declared version does not imply full Desktop acceptance. See the [changelog](CHANGELOG.md), [contributing guide](CONTRIBUTING.md) and [lifecycle checks](reviews/memory-lifecycle.md).
 
 ## License

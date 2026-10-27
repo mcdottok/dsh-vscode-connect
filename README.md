@@ -61,6 +61,8 @@ npm test
 
 Windows 可运行 `.\build.cmd` 构建并打包到 `artifacts/`。独立命令为 `npm run build`，然后创建 `artifacts/` 并运行 `npm pack --ignore-scripts --pack-destination artifacts`。构建不需要旁边的扩展仓库。
 
+后续同一内核系列更新可继续安装；构建依赖固定在已验证基线，新版完整交互仍需实际验证。
+
 兼容声明以 `package.json` 的 `engines.dsh` 为准；声明的内核版本不等于全部现场交互均已验收。见[更新日志](CHANGELOG.md)、[贡献指南](CONTRIBUTING.md)和[生命周期检查记录](reviews/memory-lifecycle.md)。
 
 ## 许可

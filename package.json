@@ -1,6 +1,6 @@
 {
   "name": "dsh-vscode-connect",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "Connect DeepSeek Harness to Visual Studio Code with local Windows auto-pairing and manual connection.",
   "type": "module",
   "license": "MIT",
@@ -22,7 +22,7 @@
   ],
   "engines": {
     "node": ">=22.19.0",
-    "dsh": "0.2.1-rc.2 || 0.2.1-rc.3"
+    "dsh": ">=0.2.1-rc.2 <0.3.0-0"
   },
   "dsh": {
     "bundle": {
