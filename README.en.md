@@ -2,7 +2,7 @@
 
 [简体中文](README.md) | [English](README.en.md)
 
-Connect DeepSeek Harness / DSH Desktop to the DSH extension in VS Code and continue the same conversation in your editor.
+Connect DeepSeek Harness / DSH Desktop to the companion [DSH for VS Code](https://github.com/mcdottok/vscode-dsh) extension and continue the same conversation in your editor, with an experience similar to the Codex and Claude Code extensions for VS Code.
 
 ## Demo
 
@@ -12,6 +12,8 @@ Connect DeepSeek Harness / DSH Desktop to the DSH extension in VS Code and conti
 
 ## Install and connect
 
+Both plugins are required: **install this plugin in DeepSeek Harness / DSH Desktop and the companion extension in VS Code**.
+
 In **DeepSeek Harness / DSH Desktop → Plugins → Add plugin**, enter the package name below and click **Install**. No manual download is needed:
 
 ```text
@@ -19,7 +21,7 @@ dsh-vscode-connect@latest
 ```
 
 1. After installation, enable the plugin and keep Desktop running. New installations enable **VS Code connection** by default.
-2. Install the companion DSH extension in VS Code and open a trusted project folder.
+2. Download the `.vsix` from [DSH for VS Code Releases](https://github.com/mcdottok/vscode-dsh/releases), install it in VS Code via **Extensions: Install from VSIX…**, and open a trusted project folder.
 3. On Windows, the plugins discover and connect automatically on the same machine. Select the same workspace and existing session to continue development.
 
 Browser access and a specific Desktop layout are not required. A previously saved disabled setting is respected; re-enable it under **Settings → General → VS Code connection**.
@@ -40,13 +42,13 @@ For Desktop's `desktop` profile, run this with **the CLI bundled with that Deskt
 dsh plugin --profile desktop add dsh-vscode-connect@latest
 ```
 
-Here, `dsh` must refer to the target Desktop's bundled CLI. Do not use a global DSH command from another runtime version to modify Desktop's profile. Desktop users can also use the **Add plugin** entry described above.
+When managing the `desktop` profile, `dsh` must refer to the target Desktop's bundled CLI. Do not use a global DSH command from another runtime version to modify Desktop's profile. Desktop users can also use the **Add plugin** entry described above.
 
 The package is downloaded from npm; `dsh plugin` installs it into the selected profile and registers the plugin.
 
 ## Manual connection and controls
 
-For other platforms, remote environments, or when automatic connection is unavailable, choose **Copy connection address** in Desktop and run **DSH: Connect to Desktop** in VS Code. Existing manual connection settings take precedence over discovery.
+For other platforms, remote environments, or when automatic connection is unavailable, choose **Copy connection address** under **Settings → General → VS Code connection** in Desktop, then run **DSH: Connect to Desktop** in VS Code and paste the address. Existing manual connection settings take precedence over discovery.
 
 The address contains credentials; do not share it. Automatic connection currently supports local Windows only, with credentials protected by Windows account encryption and VS Code SecretStorage. Turning the switch off stops dedicated connections and automatic discovery.
 
