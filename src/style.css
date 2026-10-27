@@ -151,3 +151,23 @@
     gap: 12px;
   }
 }
+
+.vsc-connect__companion {
+  margin: 10px 0;
+  font-size: 13px;
+}
+.vsc-connect__companion a {
+  color: var(--dsw-alias-state-business-primary, #3269d9);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.vsc-connect__button--primary {
+  background: var(--dsw-alias-brand-primary, #101114);
+  color: var(--dsw-alias-label-primary-foreground, #fff);
+  border-color: transparent;
+  font-weight: 500;
+}
+.vsc-connect__button--primary:hover:not(:disabled) {
+  background: var(--dsw-alias-brand-primary, #101114);
+  filter: brightness(1.15);
+}
