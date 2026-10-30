@@ -26,11 +26,16 @@ const en = {
     "Enabled by default on first installation. Keep Desktop running; browser access and a specific layout are not required. Turning this off disconnects VS Code and stops automatic discovery.",
   switchFailed: "Could not save the switch. Check the current state and retry.",
   retry: "Check again",
-  companion: "Install from VS Code Marketplace: ",
+  companion:
+    "DSH Coding Agent has temporarily been removed from the VS Code Marketplace; the reason is not yet clear. We hope to republish it later. In the meantime, download the .vsix from ",
+  companionInstall:
+    " and use Extensions: Install from VSIX... in VS Code to install it. If you have any questions or suggestions, please submit feedback in the ",
+  companionFeedbackLink: "GitHub repository",
+  companionFeedbackEnd: ".",
   manual: "Manual connection",
   steps: "Connect automatically",
   step1:
-    "Install DSH Coding Agent in VS Code using the link above, then open and trust your project folder.",
+    "Download and install DSH Coding Agent using the link above, then open and trust your project folder in VS Code.",
   step2:
     "Keep Desktop running with this connection entry enabled. In the extension, select DSH Desktop. On local Windows, discovery and connection are automatic.",
   step3:
@@ -58,11 +63,16 @@ const zh = {
     "首次安装默认开启。保持桌面端运行即可，无需开启浏览器访问或切换布局。关闭后会断开 VS Code 连接并停止自动发现。",
   switchFailed: "开关保存失败，请重新检查当前状态后重试。",
   retry: "重新检查",
-  companion: "从 VS Code 扩展商城安装：",
+  companion:
+    "DSH Coding Agent 暂时被 VS Code 扩展商城下架（具体原因尚未明确™d），等待后续重新上架。期间请从 ",
+  companionInstall:
+    " 下载 .vsix 文件，在 VS Code 中选择「从 VSIX 安装…」。若有任何使用问题和建议， 请在 ",
+  companionFeedbackLink: "GitHub 仓库",
+  companionFeedbackEnd: "中提交反馈。",
   manual: "手动连接",
   steps: "自动连接",
   step1:
-    "通过上方链接在 VS Code 中安装 DSH Coding Agent，打开并信任项目文件夹。",
+    "通过上方链接下载并安装 DSH Coding Agent，在 VS Code 中打开并信任项目文件夹。",
   step2:
     "保持桌面端运行且此连接入口开启，在扩展中选择「DSH Desktop」。Windows 同机环境下自动发现并连接，无需复制地址。",
   step3: "选择同一个工作区和已有会话，即可继续。",
@@ -231,12 +241,21 @@ function ConnectionControls({ t, compact = false }) {
       <p className="vsc-connect__companion">
         {t("companion")}
         <a
-          href="https://marketplace.visualstudio.com/items?itemName=mcdottok.dsh-coding-agent"
+          href="https://github.com/mcdottok/vscode-dsh/releases"
           target="_blank"
           rel="noopener noreferrer"
         >
-          DSH Coding Agent ↗
+          GitHub Releases ↗
         </a>
+        {t("companionInstall")}
+        <a
+          href="https://github.com/mcdottok/vscode-dsh/issues"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {t("companionFeedbackLink")}
+        </a>
+        {t("companionFeedbackEnd")}
       </p>
       {!compact ? (
         <>

@@ -1,6 +1,6 @@
 {
   "name": "dsh-vscode-connect",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "Desktop companion for DSH Coding Agent in VS Code. Continue the same workspace and conversation with automatic local Windows connection.",
   "type": "module",
   "license": "MIT",
