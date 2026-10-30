@@ -2,7 +2,7 @@
 
 [简体中文](README.md) | English
 
-Connect DeepSeek Harness / DSH Desktop to the companion [DSH Coding Agent](https://marketplace.visualstudio.com/items?itemName=mcdottok.dsh-coding-agent) extension and continue the same conversation in your editor, with an experience similar to the Codex and Claude Code extensions for VS Code.
+Connect DeepSeek Harness / DSH Desktop to the companion [DSH Coding Agent](https://github.com/mcdottok/vscode-dsh) extension and continue the same conversation in your editor, with an experience similar to the Codex and Claude Code extensions for VS Code.
 
 ## Demo
 
@@ -21,13 +21,13 @@ dsh-vscode-connect@latest
 ```
 
 1. After installation, enable the plugin and keep Desktop running. New installations enable **VS Code connection** by default.
-2. Search for [DSH Coding Agent](https://marketplace.visualstudio.com/items?itemName=mcdottok.dsh-coding-agent) by `mcdottok` in VS Code Extensions and install it, or download a `.vsix` from [GitHub Releases](https://github.com/mcdottok/vscode-dsh/releases). Open a trusted project folder and select **DSH Desktop** in the extension’s connection settings.
+2. DSH Coding Agent has temporarily been removed from the VS Code Marketplace; the reason is not yet clear. We hope to republish it later. In the meantime, download the `.vsix` from [GitHub Releases](https://github.com/mcdottok/vscode-dsh/releases), then select **Extensions: Install from VSIX...** in VS Code and choose the downloaded file. Open a trusted project folder and select **DSH Desktop** in the extension’s connection settings.
 3. On Windows, the plugins discover and connect automatically on the same machine. Select the same workspace and existing session to continue development.
 
-You can also install the VS Code extension from the command line:
+After downloading the VSIX, you can also install it from its directory using the command line (replace the filename with the downloaded version):
 
 ```powershell
-code --install-extension mcdottok.dsh-coding-agent
+code --install-extension ./dsh-coding-agent-0.1.83.vsix
 ```
 
 For extension source code and issues, see the [vscode-dsh GitHub repository](https://github.com/mcdottok/vscode-dsh).

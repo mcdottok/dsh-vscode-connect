@@ -2,7 +2,7 @@
 
 简体中文 | [English](README.en.md)
 
-让 DeepSeek Harness / DSH Desktop 与配套的 [DSH Coding Agent](https://marketplace.visualstudio.com/items?itemName=mcdottok.dsh-coding-agent) 扩展连接，在编辑器中接续同一会话，提供类似 Codex、Claude Code 的 VS Code 插件体验。
+让 DeepSeek Harness / DSH Desktop 与配套的 [DSH Coding Agent](https://github.com/mcdottok/vscode-dsh) 扩展连接，在编辑器中接续同一会话，提供类似 Codex、Claude Code 的 VS Code 插件体验。
 
 ## 演示
 
@@ -21,13 +21,13 @@ dsh-vscode-connect@latest
 ```
 
 1. 安装后启用插件并保持桌面端运行。首次安装默认开启 **VS Code 连接**。
-2. 在 VS Code 扩展市场搜索 [DSH Coding Agent](https://marketplace.visualstudio.com/items?itemName=mcdottok.dsh-coding-agent)（发布者 `mcdottok`）并安装，或从 [GitHub Releases](https://github.com/mcdottok/vscode-dsh/releases) 下载 `.vsix` 手动安装。打开并信任项目文件夹，在扩展连接设置中选择 **DSH Desktop**。
+2. DSH Coding Agent 暂时被 VS Code 扩展商城下架（具体原因尚未明确），等待后续重新上架。期间请从 [GitHub Releases](https://github.com/mcdottok/vscode-dsh/releases) 下载 `.vsix`，在 VS Code 中选择 **扩展：从 VSIX 安装...** 并选中下载的文件。打开并信任项目文件夹，在扩展连接设置中选择 **DSH Desktop**。
 3. Windows 同机环境下自动发现并连接；选择同一工作区和已有会话，即可继续开发。
 
-也可在命令行安装 VS Code 扩展：
+也可在下载 VSIX 后，在文件所在目录通过命令行安装（将文件名替换为实际下载的版本）：
 
 ```powershell
-code --install-extension mcdottok.dsh-coding-agent
+code --install-extension ./dsh-coding-agent-0.1.83.vsix
 ```
 
 扩展源码与问题反馈见 [vscode-dsh GitHub 仓库](https://github.com/mcdottok/vscode-dsh)。
