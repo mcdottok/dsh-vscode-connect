@@ -1,82 +1,83 @@
-# DSH VS Code Connect
+<p align="center">
+  <img src="https://raw.githubusercontent.com/mcdottok/dsh-vscode-connect/main/assets/vscode.png" alt="" width="96" height="96">
+</p>
 
-简体中文 | [English](README.en.md)
+<h1 align="center">DSH VS Code Connect</h1>
 
-让 DeepSeek Harness / DSH Desktop 与配套的 [DSH Coding Agent](https://github.com/mcdottok/vscode-dsh) 扩展连接，在编辑器中接续同一会话，提供类似 Codex、Claude Code 的 VS Code 插件体验。
+<p align="center"><strong>在 DSH Desktop 和 VS Code 之间接续同一会话</strong></p>
 
-## 演示
+<p align="center">
+  <a href="#快速开始">快速开始</a> ·
+  <a href="#手动连接">手动连接</a> ·
+  <a href="https://github.com/mcdottok/vscode-dsh/releases">下载 VS Code 扩展</a> ·
+  <a href="README.en.md">English</a>
+</p>
 
-![DSH 与 VS Code 接续同一会话](docs/assets/demo-preview.jpg)
+这是安装在 DSH Desktop（DeepSeek Harness）里的连接插件。与 VS Code 中的 [DSH Coding Agent](https://github.com/mcdottok/vscode-dsh) 配合使用，可以在两个应用中打开同一工作区和会话，接着讨论项目或审阅代码。
 
-## 安装即连接
+![DSH Desktop 与 VS Code 接续同一会话](https://raw.githubusercontent.com/mcdottok/dsh-vscode-connect/main/docs/assets/demo-preview.jpg)
 
-连接需要两端配合：**本插件安装在 DeepSeek Harness / DSH Desktop 中，配套扩展安装在 VS Code 中**。
+## 快速开始
 
-在 **DeepSeek Harness / DSH Desktop → 插件 → 添加插件** 中填写下面的包名，点击「安装」即可，无需先下载文件：
+1. **在 DSH Desktop 安装连接插件。** 打开 **插件 → 添加插件**，输入 `dsh-vscode-connect@latest`。安装并启用插件后，保持桌面端运行。首次安装默认开启 **VS Code 连接**。
+2. **在 VS Code 安装 DSH Coding Agent。** 从 [GitHub Releases](https://github.com/mcdottok/vscode-dsh/releases) 下载 `.vsix`，在 VS Code 的扩展视图中选择 **… → 从 VSIX 安装…**，打开下载的文件。
+3. **连接桌面端。** 打开并信任项目文件夹，在 DSH 面板的 **设置 → 连接** 中选择 **DSH Desktop**。两端运行在同一台 Windows 电脑上时，点击 **连接桌面端** 即可尝试自动连接。其他平台或自动连接失败时，按下方步骤手动连接。连接成功后，打开与桌面端相同的工作区和会话。
 
-```text
-dsh-vscode-connect@latest
-```
+连接时无需开启桌面端的浏览器访问，也无需切换桌面布局。
 
-1. 安装后启用插件并保持桌面端运行。首次安装默认开启 **VS Code 连接**。
-2. DSH Coding Agent 暂时被 VS Code 扩展商城下架（具体原因尚未明确），等待后续重新上架。期间请从 [GitHub Releases](https://github.com/mcdottok/vscode-dsh/releases) 下载 `.vsix`，在 VS Code 中选择 **扩展：从 VSIX 安装...** 并选中下载的文件。打开并信任项目文件夹，在扩展连接设置中选择 **DSH Desktop**。
-3. Windows 同机环境下自动发现并连接；选择同一工作区和已有会话，即可继续开发。
+## 手动连接
 
-也可在下载 VSIX 后，在文件所在目录通过命令行安装（将文件名替换为实际下载的版本）：
+1. 在桌面端打开 **设置 → 通用设置 → VS Code 连接**。如果开关已关闭，先打开。
+2. 点击 **复制连接地址**。地址包含凭据，请勿分享。
+3. 在 VS Code 命令面板执行 **DSH: 连接桌面端**，粘贴刚复制的地址。
 
-```powershell
-code --install-extension ./dsh-coding-agent-0.1.83.vsix
-```
+已保存的手动配置优先于自动发现。关闭桌面端的 **VS Code 连接** 会断开专用连接并停止自动发现。
 
-扩展源码与问题反馈见 [vscode-dsh GitHub 仓库](https://github.com/mcdottok/vscode-dsh)。
+## 常见问题
 
-无需开启桌面端浏览器访问，也无需切换桌面布局。曾手动关闭连接的设置会保留，可在 **设置 → 通用设置 → VS Code 连接** 重新开启。
+- **桌面端显示「已就绪」，是否已经连上？** 这表示桌面端可以接受连接。实际连接状态请在 VS Code 的 DSH 面板查看。
+- **连不上或断线后无法恢复？** 确认桌面端仍在运行、两端的插件均已启用，并检查桌面端的 **VS Code 连接** 开关。需要时重新复制最新地址，走一次手动连接。
+- **使用 DSH CLI 模式需要装这个插件吗？** DSH Coding Agent 的 **DSH CLI** 模式会启动独立服务，可单独使用。如果同一会话已被另一个实例占用，可以在另一端关闭该会话、新建会话，或切换到 **DSH Desktop** 模式接续原会话。
 
-插件已发布到 [npm](https://www.npmjs.com/package/dsh-vscode-connect)。也可从 [GitHub Releases](https://github.com/mcdottok/dsh-vscode-connect/releases) 下载 `.tgz`，通过本地文件安装。若镜像源暂时找不到包，可切换官方 npm 源重试。
+## 其他安装方式
 
-### 命令行安装（从 npm 获取）
+连接插件也可从 [npm](https://www.npmjs.com/package/dsh-vscode-connect) 安装，或从 [GitHub Releases](https://github.com/mcdottok/dsh-vscode-connect/releases) 下载 `.tgz`，在 DSH 中通过本地文件安装。npm 镜像尚未同步时，可以切换到官方源重试。
 
-如果使用 DSH Web / CLI，可执行：
+### 使用 DSH CLI 安装连接插件
 
-```powershell
+DSH Web / CLI 的 `web` profile：
+
+```sh
 dsh plugin --profile web add dsh-vscode-connect@latest
 ```
 
-如果操作桌面端的 `desktop` profile，使用**该桌面端自带的 DSH CLI** 执行：
+桌面端的 `desktop` profile。请使用**目标桌面端随附的 DSH CLI**：
 
-```powershell
+```sh
 dsh plugin --profile desktop add dsh-vscode-connect@latest
 ```
 
-操作 `desktop` profile 时，`dsh` 应指向目标桌面端随附的 CLI，不要用其他版本的全局 DSH 命令修改桌面端 profile。桌面用户也可以直接使用前面的「添加插件」入口。
+### 使用命令行安装 VS Code 扩展
 
-包由 npm 提供，`dsh plugin` 负责安装到对应 profile 并注册插件。
+在下载目录执行，将文件名替换为实际下载的 VSIX：
 
-## 连接说明
+```sh
+code --install-extension "./<下载的文件名>.vsix"
+```
 
-- 本插件是 **桌面端的连接配套插件**，需要与 VS Code 中的 **DSH Coding Agent** 一起使用。
-- 连接入口显示「已就绪」表示桌面端可以接受连接；是否已经连接，请查看 VS Code 扩展中的状态。
-- 如果 VS Code 使用本机 npm 安装的 `dsh` 包运行独立服务，无需安装本插件。独立实例与桌面端同时打开同一会话时，可能因会话占用而无法修改模型或发送消息；请在另一实例中释放该会话、使用新会话，或改为连接原桌面端。同一工作区中的不同会话不受这一限制。
+## 兼容性与开发
 
-## 手动连接与管理
+DSH 的安装兼容范围见 [`package.json` 的 `engines.dsh`](package.json)。较新的内核版本仍需验证实际桌面交互。
 
-其他平台、远程环境或自动连接不可用时，在桌面端 **设置 → 通用设置 → VS Code 连接** 中点击 **复制连接地址**，然后在 VS Code 执行 **DSH: Connect to Desktop / 连接桌面端** 并粘贴地址。已有手动配置优先于自动发现。若无法恢复连接，确认桌面端及两端插件正在运行、连接开关已开启，再复制最新地址重新连接。
-
-连接地址含凭据，请勿分享。自动连接当前仅支持 Windows 本机，凭据由 Windows 账户加密与 VS Code SecretStorage 保护。关闭连接开关会停止专用连接和自动发现。
-
-## 开发与兼容
-
-```powershell
+```sh
 npm ci --ignore-scripts
 npm test
 ```
 
-Windows 可运行 `.\build.cmd` 构建并打包到 `artifacts/`。独立命令为 `npm run build`，然后创建 `artifacts/` 并运行 `npm pack --ignore-scripts --pack-destination artifacts`。构建不需要旁边的扩展仓库。
+Windows 可运行 `.\build.cmd`，将安装包输出到 `artifacts/`。也可运行 `npm run build`，创建 `artifacts/` 后执行 `npm pack --ignore-scripts --pack-destination artifacts`。
 
-后续同一内核系列更新可继续安装；构建依赖固定在已验证基线，新版完整交互仍需实际验证。
+更多见[更新日志](CHANGELOG.md)、[贡献指南](CONTRIBUTING.md)和[生命周期检查记录](reviews/memory-lifecycle.md)。
 
-兼容声明以 `package.json` 的 `engines.dsh` 为准；声明的内核版本不等于全部现场交互均已验收。见[更新日志](CHANGELOG.md)、[贡献指南](CONTRIBUTING.md)和[生命周期检查记录](reviews/memory-lifecycle.md)。
+## 许可证
 
-## 许可
-
-MIT。DeepSeek 派生代码及依赖署名见 [第三方声明](THIRD_PARTY_NOTICES.txt)。本项目由社区独立维护。
+本项目由社区独立维护，采用 [MIT 许可证](LICENSE)。DeepSeek 派生代码及依赖署名见[第三方声明](THIRD_PARTY_NOTICES.txt)。
