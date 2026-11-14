@@ -15,7 +15,7 @@ await build({
   platform: "node",
   format: "esm",
   target: "node22",
-  external: ["ws"],
+  external: ["ws", "@deepseek-ai/dsh-app-boot"],
 });
 await build({
   entryPoints: [path.join(root, "src/client.jsx")],

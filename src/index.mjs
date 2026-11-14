@@ -14,6 +14,7 @@ const ENTRY = "vscode-connect";
 export function apply(ctx, config) {
   let stopped = false;
   let bridge;
+  let runtimeVersion;
   const ready = ctx.typertGateway?.wireStream && ctx.effect
     ? startApiBridge(ctx.connection, ctx.typertGateway, () => config.enabled.get() === true,
         (req, res, next) => ctx.waterfall("connection/request", req, res, next)).then(async (value) => {
@@ -66,6 +67,9 @@ export function apply(ctx, config) {
     requestBody: "buffered",
     fetch: createConnectHandler(ctx.connection, ctx.webServer, {
       read,
+      readRuntimeVersion: () => (runtimeVersion ??= import("@deepseek-ai/dsh-app-boot")
+        .then(({ getDshRuntimeVersion }) => getDshRuntimeVersion())
+        .catch(() => undefined)),
       address,
       pair: async () => {
         if (!pairing) throw new Error("Pairing unavailable");

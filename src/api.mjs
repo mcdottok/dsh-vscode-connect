@@ -57,7 +57,11 @@ export function createConnectHandler(
     }
     try {
       const state = control.read();
-      if (request.method === "GET") return json({ available: true, ...state });
+      if (request.method === "GET") {
+        const runtimeVersion = state.enabled ? await control.readRuntimeVersion?.() : undefined;
+        request.signal.throwIfAborted();
+        return json({ available: true, ...state, runtimeVersion });
+      }
       if (!state.enabled) return json({ code: "CONNECTION_DISABLED" }, 403);
       const body = await request.text();
       request.signal.throwIfAborted();

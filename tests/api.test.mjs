@@ -33,6 +33,40 @@ test("status never reads or returns credentials; only the explicit POST issues a
   });
   assert.equal(calls, 1);
 });
+test("enabled status includes the optional host runtime version without issuing an address", async () => {
+  let enabled = true;
+  let runtimeVersion = "0.2.2-rc.3";
+  let versionReads = 0;
+  const handler = createConnectHandler(
+    { authenticatedUrl: () => assert.fail("status cannot issue an address") },
+    server,
+    {
+      read: () => ({ enabled, revision: 0 }),
+      readRuntimeVersion: async () => {
+        versionReads++;
+        return runtimeVersion;
+      },
+    },
+  );
+  const status = await handler(request("GET"));
+  assert.equal(status.status, 200);
+  assert.deepEqual(await status.json(), {
+    available: true,
+    enabled: true,
+    revision: 0,
+    runtimeVersion: "0.2.2-rc.3",
+  });
+
+  runtimeVersion = undefined;
+  const olderHostStatus = await handler(request("GET"));
+  assert.equal(olderHostStatus.status, 200);
+  assert.equal(Object.hasOwn(await olderHostStatus.json(), "runtimeVersion"), false);
+
+  enabled = false;
+  const disabledStatus = await handler(request("GET"));
+  assert.deepEqual(await disabledStatus.json(), { available: true, enabled: false, revision: 0 });
+  assert.equal(versionReads, 2);
+});
 test("registration uses the authenticated owner-only exact Fetch carrier", () => {
   let registration;
   apply(
