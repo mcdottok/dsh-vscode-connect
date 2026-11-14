@@ -15,7 +15,7 @@
 
 Install this companion plugin in DSH Desktop (DeepSeek Harness) and use it with [DSH Coding Agent](https://github.com/mcdottok/vscode-dsh) in VS Code. Open the same workspace and session in both apps to continue discussing your project or reviewing code.
 
-![The same session open in DSH Desktop and VS Code](https://raw.githubusercontent.com/mcdottok/dsh-vscode-connect/main/docs/assets/demo-preview.jpg)
+![The same session open in DSH Desktop and VS Code](docs/assets/demo-preview.jpg)
 
 ## Quick start
 

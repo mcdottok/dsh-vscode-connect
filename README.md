@@ -15,7 +15,7 @@
 
 这是安装在 DSH Desktop（DeepSeek Harness）里的连接插件。与 VS Code 中的 [DSH Coding Agent](https://github.com/mcdottok/vscode-dsh) 配合使用，可以在两个应用中打开同一工作区和会话，接着讨论项目或审阅代码。
 
-![DSH Desktop 与 VS Code 接续同一会话](https://raw.githubusercontent.com/mcdottok/dsh-vscode-connect/main/docs/assets/demo-preview.jpg)
+![DSH Desktop 与 VS Code 接续同一会话](docs/assets/demo-preview.jpg)
 
 ## 快速开始
 
